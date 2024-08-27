@@ -1,0 +1,16 @@
+version: '3.8' # Usamos la versión 3.8 de Docker Compose
+
+services:
+  mongodb:
+    image: mongo:5 # Usa la última imagen oficial de MongoDB
+    restart: always # Siempre reinicia el contenedor
+    container_name: mongo_container # Nombre del contenedor
+    ports:
+      - '27017:27017' # Exponemos el puerto 27017 (el puerto por defecto de MongoDB)
+    volumes:
+      - ./mongo-data:/data/db # Montamos el volumen para persistencia de datos
+    environment:
+      MONGO_DATABASE: nest-pokemon # Usuario root de MongoDB
+
+
+  # Utilizamos un volumen local para la persistencia
